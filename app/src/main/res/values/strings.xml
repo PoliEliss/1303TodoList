@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyRecaikl</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_add_todo">button add todo</string>
+    <string name="input_title">Введите заголовок</string>
+    <string name="input_task">Введите задачу</string>
 </resources>

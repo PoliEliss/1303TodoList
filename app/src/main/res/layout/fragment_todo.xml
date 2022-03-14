@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".TodoFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:padding="4dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="gone"
+        tools:text="Сходить в магазин" />
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_title"
+        android:inputType="textCapSentences"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:padding="4dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="gone"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        tools:text="Те́рмин (от лат. terminus — предел, граница) — слово или словосочетание, являющееся названием строго определённого понятия какой-нибудь области науки, техники, искусства и так далее[1][2].В словаре В. И. Даля: «Те́рмин м. лат. выражение, слово, речение, названье вещи или приёма, условное выражение»" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_task"
+        android:inputType="textCapSentences"
+        android:padding="4dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        tools:ignore="Autofill" />
+
+</LinearLayout>

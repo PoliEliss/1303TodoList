@@ -11,16 +11,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.rorono.data.Repository
+import com.rorono.domine.model.Todo
+import com.rorono.domine.usecases.GetAllTodoUseCase
 import com.rorono.myrecaikl.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-    private val repository: Repository = Repository.instance
-    private var todoList = listOf<ToDo>()
+    private val getAllTodoUseCase = GetAllTodoUseCase(Repository.instance)
+    private var todoList = listOf<Todo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +36,15 @@ class MainActivity : AppCompatActivity() {
             it.layoutManager = LinearLayoutManager(this@MainActivity)
             it.adapter = TodoAdapter()
         }
-        binding.fabAddTodo.setOnClickListener { openTodoFragment("") }
+        binding.fabAddTodo.setOnClickListener { openTodoFragment(0) }
         updateTodoList()
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun updateTodoList(){
+    private fun updateTodoList() {
         CoroutineScope(Dispatchers.IO).launch {
-            todoList = repository.getAll()
-            this@MainActivity.runOnUiThread{ binding.recyclerTodo.adapter?.notifyDataSetChanged() }
+            todoList = getAllTodoUseCase.getAllTodo()
+                          this@MainActivity.runOnUiThread { binding.recyclerTodo.adapter?.notifyDataSetChanged() }
         }
     }
 
@@ -50,11 +52,11 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (supportFragmentManager.fragments.size != 0) {
             supportFragmentManager.fragments.forEach {
-                if(it is TodoFragment) {
+                if (it is TodoFragment) {
                     CoroutineScope(Dispatchers.IO).launch {
                         it.saveTodo()
-                        todoList = repository.getAll()
-                        this@MainActivity.runOnUiThread{
+                        todoList = getAllTodoUseCase.getAllTodo()
+                        this@MainActivity.runOnUiThread {
                             supportFragmentManager.beginTransaction().remove(it).commit()
                             binding.recyclerTodo.adapter?.notifyDataSetChanged()
                         }
@@ -66,25 +68,46 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    private fun openTodoFragment(id: String) {
-        supportFragmentManager.beginTransaction().add(R.id.container, TodoFragment.newInstance(id)).commit()
+    private fun openTodoFragment(id: Long) {
+        supportFragmentManager.beginTransaction().add(R.id.container, TodoFragment.newInstance(id))
+            .commit()
     }
 
 
     inner class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoHolder>() {
 
-        inner class TodoHolder(item: View) : RecyclerView.ViewHolder(item) {
-            private val checkBox: CheckBox = itemView.findViewById(R.id.checkbox)
-            private val title: TextView = itemView.findViewById(R.id.tvtitle)
-            private val buttonDelete: ImageView = itemView.findViewById(R.id.iv_delete)
 
-            fun bind(toDo: ToDo) {
-                title.setOnClickListener { openTodoFragment(toDo.id) }
-                buttonDelete.setOnClickListener { }
-                checkBox.setOnClickListener { }
-                title.text = toDo.title
+        inner class TodoHolder(item: View) : RecyclerView.ViewHolder(item) {
+
+            private val title: TextView = itemView.findViewById(R.id.tv_title)
+            // добавить desc
+
+            // кнопка делит
+
+
+            fun bind(todo: Todo) {
+                title.setOnClickListener { openTodoFragment(todo.id) }
+               /* buttonDelete.setOnClickListener {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        repository.deleteToDo(toDo)
+                        todoList = todoList.filter {
+                            it.id != toDo.id
+                        }
+                        runOnUiThread{
+                            this@TodoAdapter.notifyDataSetChanged()
+                        }
+                    }
+
+
+                }
+*/
+
+                title.text = todo.title
             }
+
+
         }
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoHolder {
             val view =
@@ -99,6 +122,7 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount(): Int {
             return todoList.size
         }
+
     }
 }
 

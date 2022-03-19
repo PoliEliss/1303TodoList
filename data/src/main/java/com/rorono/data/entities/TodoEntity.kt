@@ -1,18 +1,16 @@
-package com.rorono.myrecaikl
+package com.rorono.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class ToDo(
+data class TodoEntity(
     var title: String = "",
     var description: String = "",
     var isComplete: Boolean = false,
     @PrimaryKey
-    val id: String = UUID.randomUUID().toString()
-) {
-
-}
+    val id: Long = UUID.randomUUID().timestamp()
+) {}
 
 

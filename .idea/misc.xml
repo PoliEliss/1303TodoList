@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/drawable/ic_arrov_hide.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/drawable/ic_arrow_shov.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/drawable/ic_delete.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/layout/activity_main.xml" value="0.340625" />
+        <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/layout/fragment_compliteble.xml" value="0.3546875" />
         <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/layout/fragment_todo.xml" value="0.3546875" />
         <entry key="..\:/Users/Polina/AndroidStudioProjects/MyRecaikl/app/src/main/res/layout/todo_item.xml" value="0.5" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

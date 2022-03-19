@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.rorono.data.entities.TodoEntity
+import com.rorono.domine.model.Todo
 
 @Dao
 interface TodoDao {
@@ -19,6 +20,7 @@ interface TodoDao {
 
      @Delete
      fun delete(todo: TodoEntity)
+
 
 
 }

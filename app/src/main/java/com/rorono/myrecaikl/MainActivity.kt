@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         inner class TodoHolder(item: View) : RecyclerView.ViewHolder(item) {
 
             private val title: TextView = itemView.findViewById(R.id.tv_title)
+            private val description:TextView = itemView.findViewById(R.id.tv_description)
             // добавить desc
 
             // кнопка делит
@@ -101,8 +102,9 @@ class MainActivity : AppCompatActivity() {
 
                 }
 */
-
                 title.text = todo.title
+                description.text = todo.title
+
             }
 
 
@@ -122,7 +124,6 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount(): Int {
             return todoList.size
         }
-
     }
 }
 

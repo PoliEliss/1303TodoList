@@ -5,4 +5,8 @@
     <string name="button_add_todo">button add todo</string>
     <string name="input_title">Введите заголовок</string>
     <string name="input_task">Введите задачу</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="description">описание.....</string>
+    <string name="open_menu">Open menu</string>
 </resources>

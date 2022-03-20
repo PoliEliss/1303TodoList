@@ -3,11 +3,10 @@ package com.rorono.myrecaikl
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +28,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+    }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       val inflater:MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_options,menu)
+        return true
     }
 
     private fun init() {
@@ -81,6 +88,8 @@ class MainActivity : AppCompatActivity() {
 
             private val title: TextView = itemView.findViewById(R.id.tv_title)
             private val description:TextView = itemView.findViewById(R.id.tv_description)
+            private val imageOptions:ImageView = itemView.findViewById(R.id.menu_option)
+
             // добавить desc
 
             // кнопка делит
@@ -104,6 +113,12 @@ class MainActivity : AppCompatActivity() {
 */
                 title.text = todo.title
                 description.text = todo.title
+                imageOptions.setOnClickListener {
+                    val popup = PopupMenu(this@MainActivity,imageOptions)
+                    val inflater:MenuInflater = popup.menuInflater
+                    inflater.inflate(R.menu.menu_options,popup.menu)
+                    popup.show()
+                }
 
             }
 

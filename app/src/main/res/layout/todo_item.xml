@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
@@ -11,7 +12,7 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="5dp"
@@ -24,5 +25,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:padding="5dp"
-        android:text="описание....." />
+        android:text="@string/description" />
+
+    <ImageView
+        android:id="@+id/menu_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/ic_menu"
+        android:contentDescription="@string/open_menu" />
+
+
 </androidx.cardview.widget.CardView>
